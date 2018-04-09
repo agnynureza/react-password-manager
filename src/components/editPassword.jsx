@@ -22,10 +22,6 @@ goFirebase = (payload) => {
     this.props.updatePassword(payload)
 }
 
-componentDidMount(){
-
-}
-
   render() { 
     return (
       <div className="container" style={{marginTop: "10px"}}>

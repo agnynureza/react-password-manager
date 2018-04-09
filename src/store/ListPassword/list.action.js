@@ -48,9 +48,25 @@ export const updatePassword = payload => {
       updatedAt: moment().format('LL')
     })
     swal("Edit success!", "edit data successfully", "success");
+  }
 }
 
+export const searchData = payload => {
+  return dispatch => {
+    db.ref('password-manager').on('value',function(data){
+      const firebase = Object.keys(data.val()).map(list => ({
+        id: list,
+        val: data.val()[list]
+      }))
+      const find = firebase.filter(search => {
+        return search.val.url.toLowerCase().indexOf(payload.toLowerCase()) !== -1 })
+      dispatch(showData(find))  
+    },function(err){
+      console.log(`error find data ${err}`)
+    })
+  }
 }
+
 
 const showData = payload => {
   return {
