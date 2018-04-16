@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { updatePassword } from '../store/ListPassword/list.action';
 import {Link} from 'react-router-dom';
 
-class EditPassword extends Component {
+export class EditPassword extends Component {
   constructor() {
     super()
     this.state = {

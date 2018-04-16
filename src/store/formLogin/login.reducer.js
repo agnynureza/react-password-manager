@@ -1,21 +1,22 @@
-import {SIGNIN} from './login.actionType'
+import { SIGNOUT } from "./login.actionType";
 
-const initialState = {
-  username_email: '' 
+const initialize = {
+  userid: '',
+  status: false
 }
 
-const reducerLogin = (state = initialState,action) => {
+const reducerLogin = (state=initialize,action)=>{
   switch(action.type){
-    case SIGNIN:{
-      return {
-        ...state, username_email: action.payload
-      }
-    }
-    default :{
-      return state
-    }
+    case SIGNOUT:
+      return{
+        ...state, 
+        status: true,
+
+      } 
+    default:
+    return state
   }
-}
+} 
 
 export {
   reducerLogin

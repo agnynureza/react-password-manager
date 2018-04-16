@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import {showDataFunc,deleteData} from '../store/ListPassword/list.action';
 import Search from './searchForm'
 
 
-class List extends Component {
-  componentDidMount(){
-    this.props.showDataFunc()
-  }
+export class List extends Component {
 
   deletePassword(payload){
     this.props.deleteData(payload)
@@ -28,31 +23,11 @@ class List extends Component {
               <th scope="col">username/Email</th>
               <th scope="col">Password</th>
               <th scope="col">Create At</th>
-              <th scope="col">Updated At</th>
+              <th scope="col">Updated At</th>z
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-          {
-            this.props.listData.map((data,i) => {
-              return (
-              <tr key={data.id}>
-                <th scope="row">{i+1}</th>
-                <td>{data.val.url}</td>
-                <td>{data.val.username_email}</td>
-                <td>{data.val.password}</td>
-                <td>{data.val.createdAt}</td>
-                <td>{data.val.updatedAt}</td>
-                <td>
-                  <Link to={`/update/${data.id}`}>
-                  <button className="btn btn-scondary" style={{marginRight:'10px'}}>Edit</button>
-                  </Link>
-                  <button className="btn btn-danger" onClick={()=> this.deletePassword(data.id)} >Delete</button>
-                </td>
-              </tr>
-              )
-            })
-          }
           </tbody>
         </table>
         <br/>
@@ -66,18 +41,5 @@ class List extends Component {
   }
 }
 
-const mapStateToProps = state =>{
-  console.log(state.reducerList)
-  return {
-    listData: state.reducerList.listData
-   }
-}
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({
-    showDataFunc,
-    deleteData
-  },dispatch)
-}
  
-export default connect(mapStateToProps,mapDispatchToProps) (List) ;
+export default List ;

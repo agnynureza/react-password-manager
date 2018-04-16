@@ -2,7 +2,7 @@ import db from '../../firebase';
 import moment from 'moment';
 import swal from 'sweetalert';
 
-export const addPassword = data => {
+export const addPassword = (data) => {
   return dispatch => {
     let userData = {
       url: data.url,

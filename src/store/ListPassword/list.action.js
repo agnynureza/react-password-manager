@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 
 export const showDataFunc = payload => {
   return dispatch => {
-    db.ref('password-manager').on('value', function(data){
+    return db.ref('password-manager').on('value', function(data){
       const firebase = Object.keys(data.val()).map(list => ({
         id: list,
         val: data.val()[list]
@@ -27,22 +27,13 @@ export const deleteData = payload => {
       dangerMode: true
     })
     .then(willDelete => {
-      if(willDelete){
-        swal("your data has been deleted",{
-          icons: "success"
-        });
         db.ref('password-manager').child(payload).remove()
-      }else{
-        swal("Your file is safe")
-      }
     })
   }
 }
 
 export const updatePassword = payload => {
   return dispatch => {
-    console.log('masuk ----------------->')
-    console.log(payload)
     db.ref('password-manager').child(payload.id).update({
       password: payload.newPassword,
       updatedAt: moment().format('LL')

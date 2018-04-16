@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "firebase": "^4.12.1",
     "moment": "^2.22.0",
     "react": "^16.3.0",
@@ -12,13 +13,19 @@
     "react-scripts": "1.1.2",
     "react-spinners": "^0.3.1",
     "redux": "^3.7.2",
+    "redux-mock-store": "^1.5.1",
     "redux-thunk": "^2.2.0",
     "sweetalert": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --setupTestFrameworkScriptFile ./src/setup.js",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "react-test-renderer": "^16.3.1"
   }
 }
